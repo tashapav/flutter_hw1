@@ -61,7 +61,7 @@ class _HomePageState extends State<HomePage> {
 
 class Card extends StatelessWidget {
   final String title, description, image, url, author, content;
-  const Card({required this.title, required this.description, required this.image, required this.url, required this.author, required this.content});
+  const Card({super.key, required this.title, required this.description, required this.image, required this.url, required this.author, required this.content});
   
   @override
   Widget build(BuildContext context) {

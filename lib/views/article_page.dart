@@ -6,6 +6,15 @@ class ArticlePage extends StatelessWidget {
   final String  title, image, url, author, content;
   const ArticlePage({required this.title, required this.image, required this.url, required this.author, required this.content});
 
+  void openLink() async {
+    Uri uri = Uri.parse(url);
+    //if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    //} else {
+      //throw "error launching";
+    //}
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,9 +28,9 @@ class ArticlePage extends StatelessWidget {
               child: Image.network(image),
             ),
             const SizedBox(height: 30,),
-            InkWell(
-              child: Text(url, style: TextStyle(color: Colors.blue[700], decoration: TextDecoration.underline,),),
-              onTap: () => {},
+            GestureDetector(
+              onTap: openLink,
+              child: Text(url, style:  const TextStyle(color: Colors.blue, decoration: TextDecoration.underline),),
             ),
             const SizedBox(height: 15,),
             Text(author, style:  TextStyle(color: Colors.grey[600], fontSize: 12),),
